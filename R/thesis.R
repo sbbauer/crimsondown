@@ -143,10 +143,6 @@ thesis_word <- function(...){
                                        ...,
                                        reference_docx = "template.docx")
 
-  # Mostly copied from knitr::render_sweave
-  base$knitr$opts_chunk$comment <- NA
-  base$knitr$opts_chunk$fig.align <- "center"
-
   base
 
 }
