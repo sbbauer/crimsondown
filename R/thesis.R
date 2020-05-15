@@ -47,7 +47,6 @@ chapter_pdf <- function(...){
 
   base <- bookdown::pdf_book(template = "template_chapter.tex",
                              keep_tex = TRUE,
-                             pandoc_args = c("--top-level-division=chapter"),
                              ...)
 
   # Mostly copied from knitr::render_sweave
@@ -115,9 +114,6 @@ chapter_redoc <- function(...){
                                        redoc::rawblockwrap, redoc::rawspanwrap),
                        reference_docx = "template_chapter.docx")
 
-  # Mostly copied from knitr::render_sweave
-  base$knitr$opts_chunk$comment <- NA
-  base$knitr$opts_chunk$fig.align <- "center"
 
   base
 
@@ -167,10 +163,6 @@ chapter_word <- function(...){
   base <- bookdown::markdown_document2(base_format = "officedown::rdocx_document",
                                        ...,
                                        reference_docx = "template_chapter.docx")
-
-  # Mostly copied from knitr::render_sweave
-  base$knitr$opts_chunk$comment <- NA
-  base$knitr$opts_chunk$fig.align <- "center"
 
   base
 
