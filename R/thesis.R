@@ -1,34 +1,58 @@
 #' Creates an R Markdown PDF Thesis document
 #'
 #' This is a function called in output in the YAML of the driver Rmd file
-#' to specify using the Reed College Senior Thesis LaTeX template and cls files.
+#' to specify using the Harvard LaTeX template and cls files.
 #'
 #' @export
-#'
-#' @param toc A Boolean (TRUE or FALSE) specifying whether table of contents should be created
-#' @param toc_depth A positive integer
-#' @param ... Further arguments passed to or from other methods.
-#' @param highlight Syntax highlighting style. Supported styles include "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", and "haddock". Pass NULL to prevent syntax highlighting.
-#'
-#' @return A modified \code{pdf_document} based on the Reed Senior Thesis LaTeX
-#'   template
+#' @param ... other arguments to bookdown::pdf_book
+#' @return A modified \code{pdf_document} based on Harvard guidelines
+#' @import bookdown
 #' @examples
 #' \dontrun{
-#'  output: thesisdown::thesis_pdf
+#'  output: crimsondown::thesis_pdf
 #' }
-thesis_pdf <- function(toc = TRUE, toc_depth = 3, highlight = "default", ...){
+thesis_pdf <- function(...){
 
   base <- bookdown::pdf_book(template = "template.tex",
-    toc = toc,
-    toc_depth = toc_depth,
-    highlight = highlight,
-    keep_tex = TRUE,
-    pandoc_args = "--top-level-division=chapter",
-    ...)
+                             keep_tex = TRUE,
+                             pandoc_args = c("--top-level-division=chapter"),
+                             ...)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- NA
-  #base$knitr$opts_chunk$fig.align <- "center"
+  base$knitr$opts_chunk$fig.align <- "center"
+
+  old_opt <- getOption("bookdown.post.latex")
+  options(bookdown.post.latex = fix_envs)
+  on.exit(options(bookdown.post.late = old_opt))
+
+  base
+
+}
+
+#' Creates an R Markdown PDF Thesis chapter
+#'
+#' This is a function called in output in the YAML of the driver Rmd file
+#' to specify using the Harvard LaTeX template and cls files.
+#'
+#' @export
+#' @param ... other arguments to bookdown::pdf_book
+#' @return A modified \code{pdf_document} for a single thesis chapter
+#' @import bookdown
+#' @examples
+#' \dontrun{
+#'  output: crimsondown::chapter_pdf
+#' }
+chapter_pdf <- function(...){
+
+  base <- bookdown::pdf_book(template = "template_chapter.tex",
+                             keep_tex = TRUE,
+                             pandoc_args = c("--top-level-division=chapter"),
+                             ...)
+
+  # Mostly copied from knitr::render_sweave
+  base$knitr$opts_chunk$comment <- NA
+  base$knitr$opts_chunk$fig.align <- "center"
 
   old_opt <- getOption("bookdown.post.latex")
   options(bookdown.post.latex = fix_envs)
@@ -43,22 +67,22 @@ thesis_pdf <- function(toc = TRUE, toc_depth = 3, highlight = "default", ...){
 #' This is a function called in output in the YAML of the driver Rmd file
 #' to specify the creation of a webpage version of the thesis.
 #'
-#' @param ... Further arguments passed to or from other methods.
-#'
+#' @param ... other arguments to bookdown::gitbook
 #' @export
 #' @return A gitbook webpage
+#' @import bookdown
 #' @examples
 #' \dontrun{
-#'  output: thesisdown::thesis_gitbook
+#'  output: crimsondown::thesis_gitbook
 #' }
 thesis_gitbook <- function(...){
 
-  base <- bookdown::gitbook(
-    split_by = "chapter+number",
+  base <- gitbook(
+    split_by = "none",
     config = list(toc = list(collapse = "section",
-      before = '<li><a href="./"></a></li>',
-      after = '<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>',
-      ...)
+                             before = '<li><a href="./"></a></li>',
+                             after = '<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>',
+                             ...)
     )
   )
 
@@ -70,23 +94,83 @@ thesis_gitbook <- function(...){
 
 }
 
-#' Creates an R Markdown Word Thesis document
+
+#' Creates an R Markdown Word Thesis chapter that can be read back into R markdown
 #'
 #' This is a function called in output in the YAML of the driver Rmd file
-#' to specify the creation of a Microsoft Word version of the thesis.
-#'
-#' @param ... Further arguments passed to or from other methods.
-#'
+#' to specify the creation of a Microsoft Word version of the chapter using the redoc package.
+#' Very very preliminary.
+#' @param ... other arguments to  bookdown::word_document2
+#' @seealso \url{https://noamross.github.io/redoc/} for more about the redoc package
 #' @export
-#' @return A Word Document based on (hopefully soon, but not currently)
-#' the Reed Senior Thesis Word template
+#' @return A Word Document somewhat based on the guidelines, but needs manual editing.
 #' @examples
 #' \dontrun{
-#'  output: thesisdown::thesis_word
+#'  output: crimsondown::chapter_redoc
+#' }
+chapter_redoc <- function(...){
+
+  base <- redoc::redoc(...,
+                       wrappers = list(redoc::latexwrap, redoc::citationwrap,
+                                       redoc::rawblockwrap, redoc::rawspanwrap),
+                       reference_docx = "template_chapter.docx")
+
+  # Mostly copied from knitr::render_sweave
+  base$knitr$opts_chunk$comment <- NA
+  base$knitr$opts_chunk$fig.align <- "center"
+
+  base
+
+}
+
+#' Creates an R Markdown Word Thesis document with more formatting options
+#'
+#' This is a function called in output in the YAML of the driver Rmd file
+#' to specify the creation of a Microsoft Word version of the thesis using the officedown package.
+#' @param ... other arguments to bookdown::word_document2
+#' @seealso \url{https://github.com/davidgohel/officedown} for more about the officedown package
+#' @import bookdown
+#' @export
+#' @return A Word Document somewhat based on the guidelines, but needs manual editing.
+#' @examples
+#' \dontrun{
+#'  output: crimsondown::thesis_word
 #' }
 thesis_word <- function(...){
 
-  base <- bookdown::word_document2(...)
+
+  base <- bookdown::markdown_document2(base_format = "officedown::rdocx_document",
+                                       ...,
+                                       reference_docx = "template.docx")
+
+  # Mostly copied from knitr::render_sweave
+  base$knitr$opts_chunk$comment <- NA
+  base$knitr$opts_chunk$fig.align <- "center"
+
+  base
+
+}
+
+
+#' Creates an R Markdown Word Thesis chapter with more formatting options
+#'
+#' This is a function called in output in the YAML of the driver Rmd file
+#' to specify the creation of a Microsoft Word version of the thesis using the officedown package.
+#' @param ... other arguments to bookdown::word_document2
+#' @seealso \url{https://github.com/davidgohel/officedown} for more about the officedown package
+#' @import bookdown
+#' @export
+#' @return A Word Document of a single chapter
+#' @examples
+#' \dontrun{
+#'  output: crimsondown::chapter_word
+#' }
+chapter_word <- function(...){
+
+
+  base <- bookdown::markdown_document2(base_format = "officedown::rdocx_document",
+                                       ...,
+                                       reference_docx = "template_chapter.docx")
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- NA
@@ -101,17 +185,17 @@ thesis_word <- function(...){
 #' This is a function called in output in the YAML of the driver Rmd file
 #' to specify the creation of a epub version of the thesis.
 #'
-#' @param ... Further arguments passed to or from other methods.
-#'
+#' @param ... other arguments to bookdown::epub_book
+#' @import bookdown
 #' @export
 #' @return A ebook version of the thesis
 #' @examples
 #' \dontrun{
-#'  output: thesisdown::thesis_epub
+#'  output: crimsondown::thesis_epub
 #' }
 thesis_epub <- function(...){
 
-  base <- bookdown::epub_book(...)
+  base <- epub_book(...)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- NA

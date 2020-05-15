@@ -1,0 +1,7 @@
+book_filename: "chapter"
+chapter_name: ""
+rmd_files: ["index.Rmd", "01-text.Rmd", "02-appendix.Rmd", "99-references.Rmd"]
+download: [["chapter.pdf", "PDF"], ["chapter.docx", "Word"]]
+delete_merged_file: true
+# new_session: true
+# rmd_subdir: true

@@ -2,7 +2,7 @@
 % https://github.com/benmarwick/huskydown which itself pulls from
 % https://github.com/ismayc/thesisdown and https://github.com/suchow/Dissertate among others
 
-\documentclass[$if(font-size)$$font-size$$else$10$endif$pt]{harvardthesis}
+\documentclass[$if(font-size)$$font-size$$else$12$endif$pt]{harvardchapter}
 \geometry{margin=$if(margin)$$margin$$else$1$endif$in $if(twoside)$,twoside, inner=$inner$,outer=$outer$$endif$}
 % margin={A,B} is equivalent to hmargin={A,B} and vmargin={A,B}. margin=A is automatically expanded to hmargin=A and vmargin=A.
 
@@ -75,21 +75,6 @@
   \fi
 \fi
 
-
-% fields for title page
-\title{$title$}
-\author{$author$}
-\degreename{$degree-name$}
-\degreefield{$degree-field$} % Official name of subject as listed in GSAS handbook
-\department{$department$} % official name of department
-\degreemonth{$degree-month$} % Month of Defense (i.e. month when DAC was signed)
-\degreeyear{$degree-year$} % Year the DAC was signed
-\principaladvisor{$advisor$}
-
-% Optionally, you can add a second advisor, but you can't have three
-$if(co-advisor)$
-\secondadvisor{$co-advisor$}
-$endif$
 
 % code highlighting colors
 \definecolor{keyword}{HTML}{$if(keyword-color)$$keyword-color$$else$1b6ca2$endif$}
@@ -224,7 +209,7 @@ $if(space_between_paragraphs)$
 $endif$
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
-\setcounter{secnumdepth}{$if(secnum-depth)$$secnum-depth$$else$2$endif$} %% controls section numbering, e.g. 1 or 1.2, or 1.2.3
+\setcounter{secnumdepth}{$if(secnum-depth)$$secnum-depth$$else$0$endif$} %% controls section numbering, e.g. 1 or 1.2, or 1.2.3
 
 % user packages, etc.
 $for(header-includes)$
@@ -248,40 +233,6 @@ $for(include-before)$
 $include-before$
 $endfor$
 %%%%%%%%%%%%%%%% FRONTMATTER %%%%%%%%%%%%%%%%
-
-\pagenumbering{roman} % GSAS wants roman page numbers for frontmatter
-
-% the following four pages are required in that order. The first two pages are
-% not allowed to have page numbers, this is taken care of in the class file.
-\thesistitlepage
-\copyrightpage
-\begin{abstract}
-$abstract$
-\end{abstract}
-
-% Center headings for table of contents, LOT, and LOF and make them smaller so
-% that "Abstract", "Acknowledgments" and "Contents" all look alike.
-\renewcommand{\contentsname}{\protect\centering\protect\Large Contents}
-\renewcommand{\listtablename}{\protect\centering\protect\Large List of Tables}
-\renewcommand{\listfigurename}{\protect\centering\protect\Large List of Figures}
-
-\tableofcontents % Table of contents
-
-% The rest of the front matter: Lists of tables, figures, dedication and
-% acknowledment is optional. Comment out whatever you don't like
-\listoftables
-\listoffigures
-\begin{acknowledgments}
-  $acknowledgments$
-\end{acknowledgments}
-\begin{dedication}
-  $dedication$
-\end{dedication}
-
-
-%%%%%%%%%%%%%%%% MAIN BODY %%%%%%%%%%%%%%%%
-
-\pagenumbering{arabic} % reset page numbering and switch to arabic
 
 $body$
 

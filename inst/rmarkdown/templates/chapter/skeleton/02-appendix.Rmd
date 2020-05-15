@@ -1,0 +1,11 @@
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+`r if(knitr:::is_html_output()) '# (APPENDIX) Appendix {-}'` 
+
+# Appendix {-}
+<!--
+If you feel it necessary to include an appendix, it goes here. Leave the inline R code above to make sure it appears correctly as the appendix in both formats.
+-->
+
+
+This is where you can put your appendix.

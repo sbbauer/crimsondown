@@ -7,7 +7,7 @@
 thesis_epub(...)
 }
 \arguments{
-\item{...}{Further arguments passed to or from other methods.}
+\item{...}{other arguments to bookdown::epub_book}
 }
 \value{
 A ebook version of the thesis
@@ -18,6 +18,6 @@ to specify the creation of a epub version of the thesis.
 }
 \examples{
 \dontrun{
- output: thesisdown::thesis_epub
+ output: crimsondown::thesis_epub
 }
 }

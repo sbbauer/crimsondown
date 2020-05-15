@@ -1,0 +1,21 @@
+# Title {.unnumbered}
+
+## Abstract
+
+If the chapter has an abstract it goes here.
+
+\newpage
+
+## Introduction
+
+This is just a chapter.
+
+## Methods
+
+### Data
+
+### Statistical Analysis
+
+## Results
+
+## Discussion

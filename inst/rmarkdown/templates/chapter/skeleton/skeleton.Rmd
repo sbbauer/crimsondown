@@ -1,0 +1,12 @@
+---
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+output: 
+  crimsondown::chapter_pdf: 
+    latex_engine: pdflatex
+  crimsondown::chapter_word: default
+  crimsondown::chapter_redoc: default
+bibliography: bib/thesis.bib
+bibstyle: csl/apa.csl
+link-citations: yes
+---
