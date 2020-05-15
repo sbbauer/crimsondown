@@ -6,7 +6,7 @@ Currently, the PDF and gitbook versions are fully functional.  The word version 
 
 New to this package are the `chapter_` output formats, designed for drafting chapters without dealing with all the front matter and fancy formatting. The `.Rmd` files can just be copied from a chapter folder to the full document folder when you're ready to render the whole thing. Both pdf and word versions are available, as is a version that uses the [`redoc`](https://noamross.github.io/redoc/) package to output word documents. The goal of this is to make going back and forth between RMarkdown and Word easier. I have no idea if it will work or be useful here. 
 
-Although you might want to start off with just a chapter, you should first go through the whole thesis template to see how it works, as there is a lot of documentation in the template files. The instrucitons below will walk you through this. 
+Although you might want to start off with just a chapter, you should first go through the whole thesis template to see how it works, as there is a lot of documentation in the template files. The instructions below will walk you through this. 
 
 # Using crimsondown to write your dissertation
 
