@@ -7,6 +7,6 @@ output:
   crimsondown::chapter_word: default
   crimsondown::chapter_redoc: default
 bibliography: bib/thesis.bib
-bibstyle: csl/apa.csl
+csl: csl/apa.csl
 link-citations: yes
 ---

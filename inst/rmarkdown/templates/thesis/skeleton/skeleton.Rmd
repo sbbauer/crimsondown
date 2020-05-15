@@ -23,9 +23,8 @@ output:
   crimsondown::thesis_word: default
   crimsondown::thesis_epub: default
 bibliography: bib/thesis.bib
-bibstyle: csl/apa.csl
+csl: csl/apa.csl
 link-citations: yes
-always_allow_html: true
 ## Download your specific bibliography database file and refer to it in the line above.
 # space_between_paragraphs: true # blank new line between each paragraph?
 # margin: 1 # if you'd like a larger margin (in inches)
