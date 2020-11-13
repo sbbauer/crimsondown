@@ -5,7 +5,7 @@ output:
   crimsondown::chapter_pdf: 
     latex_engine: pdflatex
   crimsondown::chapter_word: default
-  crimsondown::chapter_redoc: default
+  crimsondown::thesis_gitbook: default
 bibliography: bib/thesis.bib
 csl: csl/apa.csl
 link-citations: yes

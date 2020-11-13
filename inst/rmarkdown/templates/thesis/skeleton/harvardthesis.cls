@@ -42,7 +42,9 @@
 
 % Add references, to Table of Contents, but not TOC itself, or list of tables
 % and figures
-\RequirePackage[nottoc,notlot,notlof]{tocbibind}
+\RequirePackage[
+nottoc,notlot,notlof
+]{tocbibind}
 
 % Slightly tweak font spacing for aesthetics
 \RequirePackage{microtype}
@@ -87,7 +89,7 @@
   \begin{titlepage}
     \thispagestyle{empty}
     \null\vfil
-    %\addcontentsline{toc}{section}{Title Page} % seems silly to add it
+    \addcontentsline{toc}{chapter}{Title Page}
     \begin{center}
       {\LARGE\bfseries {\@title}}\\[3em]
       A dissertation presented\\
@@ -113,6 +115,7 @@
 {
   \thispagestyle{empty}
   \null\vfil
+  \addcontentsline{toc}{section}{Copyright}
   \begin{center}
     \textcopyright\ \@degreeyear\ \@author\\
     All rights reserved.
@@ -165,6 +168,7 @@
 % Redefine them
 \renewcommand{\tableofcontents}%
 {
+    \addcontentsline{toc}{section}{Table of Contents}
   \begin{spacing}{1.2} % 1.2 looks nicer than 1
     \LaTeXTOC
   \end{spacing}

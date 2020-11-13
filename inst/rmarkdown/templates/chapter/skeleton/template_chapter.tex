@@ -210,6 +210,8 @@ $endif$
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \setcounter{secnumdepth}{$if(secnum-depth)$$secnum-depth$$else$0$endif$} %% controls section numbering, e.g. 1 or 1.2, or 1.2.3
+\AtBeginEnvironment{tabular}{\singlespacing}
+\AtBeginEnvironment{longtable}{\singlespacing}
 
 % user packages, etc.
 $for(header-includes)$

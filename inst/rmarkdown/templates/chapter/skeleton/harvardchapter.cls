@@ -78,7 +78,7 @@
 % \RequirePackage{lettrine}
 % \RequirePackage{fancyhdr}
 
-\renewcommand{\setthesection}{\arabic{chapter}.A\arabic{section}}
+% \renewcommand{\setthesection}{\arabic{chapter}.A\arabic{section}}
 
 \RequirePackage[tight,nice]{units}
 \RequirePackage{url}

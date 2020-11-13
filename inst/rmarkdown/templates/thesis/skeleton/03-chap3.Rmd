@@ -33,7 +33,7 @@ kable(flights[1:20, 1:12],
       booktabs = TRUE)
 ```
 <!---BLOCK_LANDSCAPE_STOP--->
-`r if(knitr:::is_latex_output()) '\\begin{landscape}'`
+`r if(knitr:::is_latex_output()) '\\end{landscape}'`
 
 We make sure to label the code chunks so that we can reference the long table as \@ref(tab:longtab) and wide table as \@ref(tab:widetab).
 

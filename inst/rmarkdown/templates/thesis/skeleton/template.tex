@@ -49,13 +49,15 @@
 \usepackage{silence}
 \WarningsOff[xcolor] % issue with Rmarkdown?
 
-%  to have chapter titles in table of contents shifted
-%  \RequirePackage[titles]{tocloft}
-% \setlength{\cftchapnumwidth}{10em}
-% \setlength{\cftsubsecnumwidth}{10em}
-%  \renewcommand\cftpartnumwidth{10em}
-%  \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
- % \renewcommand{\cftchapfont}{\normalsize \scshape}
+% Pandoc change
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
 
 % commands and environments needed by pandoc snippets
 % extracted from the output of `pandoc -s`
