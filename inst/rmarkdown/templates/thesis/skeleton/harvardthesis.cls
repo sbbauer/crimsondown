@@ -224,7 +224,7 @@ nottoc,notlot,notlof
 
 % for chapter pages
 \RequirePackage{quotchap}
-\qsetcnfont{baskervillef}
+\qsetcnfont{libertine}
 
 % align chapters with and without numbers
 \makeatletter
@@ -253,11 +253,21 @@ nottoc,notlot,notlof
 
 % FONT
 \RequirePackage[T1]{fontenc}
-\RequirePackage[p,osf]{baskervillef}
-\RequirePackage[varqu,varl,var0]{inconsolata}
-\RequirePackage[scale=.95,type1]{cabin}
-\RequirePackage[baskerville,vvarbb]{newtxmath}
-\RequirePackage[cal=boondoxo]{mathalfa}
+% \RequirePackage[p,osf]{baskervillef}
+% \RequirePackage[varqu,varl,var0]{inconsolata}
+% \RequirePackage[scale=.95,type1]{cabin}
+% \RequirePackage[baskerville,vvarbb]{newtxmath}
+% \RequirePackage[cal=boondoxo]{mathalfa}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage[lining]{libertine}
+\usepackage{textcomp}
+\usepackage[scaled=0.96,varqu,varl]{inconsolata}
+\usepackage{mathtools}
+\usepackage[libertine,libaltvw,liby,vvarbb]{newtxmath}
+\IfFileExists{mathalfa.sty}{\usepackage[scr=boondoxo]{mathalfa}}{}
+\IfFileExists{bm.sty}{\usepackage{bm}}{}
+\useosf
 
 % Indicate that LaTeX can stop reading this file. LaTeX will ignore anything
 % after this line. Not required, but good practice.

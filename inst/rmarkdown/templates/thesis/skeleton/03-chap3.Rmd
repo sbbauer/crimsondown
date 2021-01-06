@@ -23,8 +23,9 @@ kable_styling(latex_options = c("repeat_header"))
 
 We might also have tables that are very wide, and for which we need to switch to landscape. The code here allows for landscape mode in both pdf and word (via officedown).
 
-`r if(knitr:::is_latex_output()) '\\begin{landscape}'`
 <!---BLOCK_LANDSCAPE_START--->
+
+`r if(knitr:::is_latex_output()) '\\begin{landscape}'`
 
 ```{r widetab, echo = FALSE}
 kable(flights[1:20, 1:12], 
@@ -32,8 +33,10 @@ kable(flights[1:20, 1:12],
       longtable = TRUE,
       booktabs = TRUE)
 ```
-<!---BLOCK_LANDSCAPE_STOP--->
+
 `r if(knitr:::is_latex_output()) '\\end{landscape}'`
+
+<!---BLOCK_LANDSCAPE_STOP--->
 
 We make sure to label the code chunks so that we can reference the long table as \@ref(tab:longtab) and wide table as \@ref(tab:widetab).
 

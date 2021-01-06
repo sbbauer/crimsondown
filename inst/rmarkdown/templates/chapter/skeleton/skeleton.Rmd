@@ -4,8 +4,8 @@ site: bookdown::bookdown_site
 output: 
   crimsondown::chapter_pdf: 
     latex_engine: pdflatex
-  crimsondown::chapter_word: default
-  crimsondown::thesis_gitbook: default
+  # crimsondown::chapter_word: default
+  # crimsondown::thesis_gitbook: default
 bibliography: bib/thesis.bib
 csl: csl/apa.csl
 link-citations: yes

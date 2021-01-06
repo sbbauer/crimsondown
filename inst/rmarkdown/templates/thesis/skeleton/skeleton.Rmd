@@ -19,9 +19,9 @@ site: bookdown::bookdown_site
 output: 
   crimsondown::thesis_pdf:
     latex_engine: pdflatex
-  crimsondown::thesis_gitbook: default
-  crimsondown::thesis_word: default
-  crimsondown::thesis_epub: default
+  # crimsondown::thesis_gitbook: default
+  # crimsondown::thesis_word: default
+  # crimsondown::thesis_epub: default
 bibliography: bib/thesis.bib
 csl: csl/apa.csl
 link-citations: yes
