@@ -1,6 +1,6 @@
 # ustandown
 
-Based on the crimsondown package by Louisa H Smith (https://github.com/louisahsmith/crimsondown) the appropriate files have been modified to suit the requirements for a doctoral thesis at the University of St Andrews. Original READme below:
+Based on the crimsondown package by Louisa H Smith (https://github.com/louisahsmith/crimsondown) the appropriate files have been modified to suit the requirements for a doctoral thesis at the University of St Andrews. Original README below:
 
 # crimsondown
 
