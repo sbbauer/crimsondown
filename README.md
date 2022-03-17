@@ -1,3 +1,7 @@
+# ustandown
+
+Based on the crimsondown package by Louisa H Smith (https://github.com/louisahsmith/crimsondown) the appropriate files have been modified to suit the requirements for a doctoral thesis at the University of St Andrews. Original READme below:
+
 # crimsondown
 
 This project builds directly off Chester Ismay's [`thesisdown`](https://github.com/ismayc/thesisdown) package, which uses the [`bookdown`](https://github.com/rstudio/bookdown) package to support the writing of theses meeting certain style requirements. This implementation attempts to conform to [Harvard University Graduate School of Arts and Sciences formatting requirements](https://gsas.harvard.edu/degree-requirements/dissertations/formatting-your-dissertation), which had previously been translated to LateX by [Michael Kolesár](https://github.com/kolesarm/harvard-gsas-thesis). It was also influenced by Ben Marwick's [`huskydown`](https://github.com/benmarwick/huskydown). A list of other schools for which thesisdown related packages are available can be found [here](https://github.com/ismayc/thesisdown#customizing-thesisdown-to-your-institution).
