@@ -162,7 +162,7 @@ chapter_word <- function(...){
 
   base <- bookdown::markdown_document2(base_format = "officedown::rdocx_document",
                                        ...,
-                                       reference_docx = "template_chapter.docx")
+                                       reference_docx = "template_chapter_od.docx")
 
   base
 
